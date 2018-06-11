@@ -9,7 +9,7 @@ Additionally, it emphasizes that you must
 before you can implement a solution to the problem in Python. 
   
 Authors: David Mutchler, Dave Fisher, Valerie Galluzzi, Amanda Stouder,
-         their colleagues and PUT_YOUR_NAME_HERE.
+         their colleagues and Riley Callahan.
 """  # TODO: 1. PUT YOUR NAME IN THE ABOVE LINE.
 
 import rosegraphics as rg
@@ -111,6 +111,12 @@ def draw_squares_from_circle(n, circle, window):
     #          ** FIRST DO A CONCRETE EXAMPLE BY HAND! **
     ####################################################################
     # ------------------------------------------------------------------
+    for k in range(n):
+        center = rg.Point(circle.center.x + (k * .5 * circle.radius),
+                          circle.center.y + (k * .5 * circle.radius))
+        square = rg.Square(center, circle.radius)
+        square.attach_to(window)
+    window.render()
 
 
 def run_test_draw_circles_from_rectangle():
@@ -134,6 +140,15 @@ def run_test_draw_circles_from_rectangle():
     #   Follow the same form as the example in a previous problem.
     ####################################################################
     # ------------------------------------------------------------------
+    window3 = rg.RoseWindow(650, 350)
+
+    # Test 1:
+    rectangle = rg.Rectangle(rg.Point(400, 250), rg.Point(440, 325))
+    rectangle.outline_color = 'red'
+    rectangle.fill_color = 'blue'
+    draw_circles_from_rectangle(3, 5, rectangle, window3)
+
+    window3.close_on_mouse_click()
 
 
 def draw_circles_from_rectangle(m, n, rectangle, window):
@@ -189,6 +204,15 @@ def draw_circles_from_rectangle(m, n, rectangle, window):
     #          ** FIRST DO A CONCRETE EXAMPLE BY HAND! **
     ####################################################################
     # ------------------------------------------------------------------
+    rectangle.attach_to(window)
+    for k in range(m):
+        reccenter = rectangle.get_center()
+        cpoint = rg.Point(reccenter.x - .5 * rectangle.get_width() - (k + .5) *
+                          rectangle.get_height(), reccenter.y)
+        circle = rg.Circle(cpoint, .5 * rectangle.get_height())
+        circle.fill_color = rectangle.fill_color
+        circle.attach_to(window)
+    window.render()
 
 
 def run_test_draw_lines_from_rectangles():
