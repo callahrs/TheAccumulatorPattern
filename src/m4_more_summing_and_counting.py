@@ -12,7 +12,7 @@ in its "in graphics" form:
    IN GRAPHICS:   x = x + pixels
 
 Authors: David Mutchler, Dave Fisher, Valerie Galluzzi, Amanda Stouder,
-         their colleagues and PUT_YOUR_NAME_HERE.
+         their colleagues and Riley Callahan.
 """  # TODO: 1. PUT YOUR NAME IN THE ABOVE LINE.
 
 import math
@@ -89,6 +89,7 @@ def run_test_sum_from():
     print('Test 4 expected (from formula):', answer_from_formula)
     print('       actual (from my code):  ', answer_from_my_code)
 
+
 # ----------------------------------------------------------------------
 # TODO: 2.
 #   When you have READ the above  run_test_sum_from  function,
@@ -125,6 +126,12 @@ def sum_from(m, n):
     #   of the RANGE expression, if you happen to know them.
     # ------------------------------------------------------------------
 
+    total = 0
+    end = n - m
+    for k in range(end + 1):
+        total = total + k + m
+    return total
+
 
 def run_test_factorial():
     """ Tests the   factorial   function. """
@@ -156,6 +163,23 @@ def run_test_factorial():
     print('Test 2 expected (from oracle):', answer_from_oracle)
     print('       actual (from my code): ', answer_from_my_code)
 
+    # Test 3:
+    answer_from_oracle = math.factorial(30)
+    answer_from_my_code = factorial(30)
+    print('Test 3 expected (from oracle):', answer_from_oracle)
+    print('       actual (from my code): ', answer_from_my_code)
+
+    # Test 4:
+    answer_from_oracle = math.factorial(4)
+    answer_from_my_code = factorial(4)
+    print('Test 4 expected (from oracle):', answer_from_oracle)
+    print('       actual (from my code): ', answer_from_my_code)
+
+    # Test 5:
+    answer_from_oracle = math.factorial(7)
+    answer_from_my_code = factorial(7)
+    print('Test 5 expected (from oracle):', answer_from_oracle)
+    print('       actual (from my code): ', answer_from_my_code)
     # ------------------------------------------------------------------
     # TO DO: 4 (continued).
     # Below this comment, add 3 more test cases, at least two of which
@@ -179,6 +203,10 @@ def factorial(n):
     # IMPORTANT:  Your solution MUST
     #   use an explicit    for ... in range(...):     statement.
     # ------------------------------------------------------------------
+    total = 1
+    for k in range(n):
+        total = total * (n - k)
+    return total
 
 
 def run_test_count_cosines_from():
@@ -218,6 +246,36 @@ def run_test_count_cosines_from():
     print('Test 1 expected:', expected)
     print('       actual:  ', answer)
 
+    # Test 2:
+    expected = 3
+    answer = count_cosines_from(3, 12, .5)
+    print('Test 2 expected:', expected)
+    print('       actual:  ', answer)
+
+    # Test 3:
+    expected = 2
+    answer = count_cosines_from(6, 9, 0.29)
+    print('Test 3 expected:', expected)
+    print('       actual:  ', answer)
+
+    # Test 4:
+    expected = 14
+    answer = count_cosines_from(3, 60, .75)
+    print('Test 4 expected:', expected)
+    print('       actual:  ', answer)
+
+    # Test 5:
+    expected = 3
+    answer = count_cosines_from(2, 9, 0.1)
+    print('Test 5 expected:', expected)
+    print('       actual:  ', answer)
+
+    # Test 6:
+    expected = 0
+    answer = count_cosines_from(100, 101, 8)
+    print('Test 6 expected:', expected)
+    print('       actual:  ', answer)
+
     # ------------------------------------------------------------------
     # TO DO: 6 (continued).
     # Below this comment, add 5 more test cases of your own choosing.
@@ -252,6 +310,14 @@ def count_cosines_from(m, n, x):
     #   of the RANGE expression, if you happen to know them.
     # ------------------------------------------------------------------
 
+    import math
+    count = 0
+    end = n - m
+    for k in range(end + 1):
+        if math.cos(k + m) > x:
+            count = count + 1
+    return count
+
 
 def run_test_sum_unit_fractions_from():
     """ Tests the   sum_unit_fractions_from   function. """
@@ -277,6 +343,18 @@ def run_test_sum_unit_fractions_from():
     # Below this comment, add 2 more test cases of your own choosing.
     # ------------------------------------------------------------------
 
+    # Test 2:
+    expected = 2.828968  # This is APPROXIMATELY the correct answer.
+    answer = sum_unit_fractions_from(1, 9)
+    print('Test 2 expected:', expected, '(approximately)')
+    print('       actual:  ', answer)
+
+    # Test 3:
+    expected = 2.904044  # This is APPROXIMATELY the correct answer.
+    answer = sum_unit_fractions_from(6, 100)
+    print('Test 3 expected:', expected, '(approximately)')
+    print('       actual:  ', answer)
+
 
 def sum_unit_fractions_from(m, n):
     """
@@ -298,6 +376,12 @@ def sum_unit_fractions_from(m, n):
     #   you must NOT use the 2 or 3-parameter versions
     #   of the RANGE expression, if you happen to know them.
     # ------------------------------------------------------------------
+
+    total = 0
+    end = n - m
+    for k in range(end + 1):
+        total = total + (1 / (k + m))
+    return total
 
 
 # ----------------------------------------------------------------------
